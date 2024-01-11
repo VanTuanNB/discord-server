@@ -1,0 +1,19 @@
+{
+    "name": "maple-metting",
+    "module": "index.ts",
+    "type": "module",
+    "scripts": {
+        "dev": "bun --env-file=.env --hot run src/index.ts",
+        "docker": "docker run -d -p 5000:5000 bun-express"
+    },
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@types/express": "^4.17.21",
+        "express": "^4.18.2"
+    }
+}
