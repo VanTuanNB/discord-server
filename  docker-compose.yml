@@ -1,3 +1,0 @@
-volumes:
-    - ./web/:/web
-    - web_node_modules:/web/node_modules
