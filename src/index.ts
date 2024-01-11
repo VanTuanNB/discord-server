@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { APP_PATH } from '@/core/common/constants/index.constant';
-import rootRouter from '@/routes/index.route.ts';
+import { APP_PATH } from './core/common/constants/index.constant';
+import rootRouter from './routes/index.route';
 
 const app = express();
 const port = 5000;
