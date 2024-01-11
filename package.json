@@ -3,7 +3,7 @@
     "module": "index.ts",
     "type": "module",
     "scripts": {
-        "dev": "bun --env-file=.env --hot run src/index.ts",
+        "dev": "bun --env-file=.env --hot src/index.ts",
         "docker": "docker run -d -p 5000:5000 bun-express",
         "build": "bun src/index.ts"
     },
