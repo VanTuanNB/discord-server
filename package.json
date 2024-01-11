@@ -4,7 +4,8 @@
     "type": "module",
     "scripts": {
         "dev": "bun --env-file=.env --hot run src/index.ts",
-        "docker": "docker run -d -p 5000:5000 bun-express"
+        "docker": "docker run -d -p 5000:5000 bun-express",
+        "build": "bun src/index.ts"
     },
     "devDependencies": {
         "@types/bun": "latest"
