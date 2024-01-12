@@ -13,7 +13,9 @@ RUN cd /temp/dev && bun install --frozen-lockfile
 # install with --production (exclude devDependencies)
 RUN mkdir -p /temp/prod
 COPY package.json bun.lockb /temp/prod/
+COPY tsconfig.json ./
 RUN cd /temp/prod && bun install --frozen-lockfile --production
+RUN tsc
 
 # copy node_modules from temp directory
 # then copy all (non-ignored) project files into the image
