@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "bun --env-file=.env --hot ./src/index.ts",
         "docker": "docker run -d -p 5000:5000 bun-express",
-        "build": "bun build ./src/index.ts --outdir ./dist",
+        "build": "bun build ./src/index.ts --outdir ./dist --target=bun",
         "test": "bun test --preload ./src/index.ts",
         "production": "bun --watch ./dist/index.js"
     },
