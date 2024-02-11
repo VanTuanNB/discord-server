@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const rootRouter = Router();
 
-rootRouter.use('/test', (req, res) => {
+rootRouter.get('/test', (req, res) => {
     res.json('testing routing');
 });
 
