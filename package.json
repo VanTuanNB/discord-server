@@ -1,6 +1,6 @@
 {
   "name": "maple-metting",
-  "module": "index.ts",
+  "module": "./src/index.ts",
   "type": "commonjs",
   "scripts": {
     "dev": "bun --env-file=.env --hot ./src/index.ts",
