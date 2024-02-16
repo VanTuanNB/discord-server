@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { APP_PATH } from './core/common/constants/index.constant.ts';
+import { APP_PATH } from '@/core/common/constants/index.constant';
 import rootRouter from '@/routes/index.route.ts';
 import path from 'path';
 import cors from 'cors';
