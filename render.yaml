@@ -1,7 +1,17 @@
 services:
-  - type: web
-    name: bun
-    env: docker
-    repo: https://github.com/VanTuanNB/maple-metting-server
+  - name: nodejs
+    buildCommand: docker-compose build
+    startCommand: docker-compose up -d
+    env: .env
+    envVars:
+      - key: PORT
+        from: env
+      - key: VERSION
+        from: env
+    healthCheckPath: /
     plan: starter
-    autoDeploy: true
+    ports:
+      - 80:8080
+    volumes:
+      - /app/node_modules
+      - ./src:/usr/src/app

@@ -2,15 +2,11 @@ import express from 'express';
 
 import { APP_PATH } from '@/core/common/constants/index.constant';
 import rootRouter from '@/routes/index.route.ts';
-import path from 'path';
 import cors from 'cors';
 
 const app = express();
 const port: number = 5000;
-const whitelist = [
-    'http://localhost:4209', 
-    'http://localhost:5000',
-];
+const whitelist = ['http://localhost:4209', 'http://localhost:5000'];
 app.use(
     cors((req, callback) => {
         const corsOptions = { origin: false };
@@ -21,15 +17,7 @@ app.use(
         }
         callback(null, {
             ...corsOptions,
-            methods: [
-                'GET',
-                'HEAD',
-                'POST',
-                'PATCH',
-                'PUT',
-                'DELETE',
-                'OPTIONS',
-            ],
+            methods: ['GET', 'HEAD', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
             credentials: true,
         });
     }),

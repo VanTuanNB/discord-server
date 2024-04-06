@@ -1,7 +1,8 @@
 # use the official Bun image
 # see all versions at https://hub.docker.com/r/oven/bun/tags
-FROM oven/bun:1 as base
+FROM oven/bun:1.0 as base
 WORKDIR /usr/src/app
+RUN chmod -R 777 /usr/src/app
 
 # install dependencies into temp directory
 # this will cache them and speed up future builds
@@ -37,4 +38,4 @@ COPY --from=prerelease /usr/src/app/package.json .
 # run the app
 USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "index.ts" ]
+ENTRYPOINT [ "bun", "run", "index.ts" ]
