@@ -1,8 +1,8 @@
+import cors from 'cors';
 import express from 'express';
 
-import { APP_PATH } from '@/core/common/constants/index.constant';
+import { APP_PATH } from '@/core/common/constants/index.constant.ts';
 import rootRouter from '@/routes/index.route.ts';
-import cors from 'cors';
 
 const app = express();
 const port: number = 5000;
@@ -25,6 +25,11 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(APP_PATH, rootRouter);
+app.get('/', (req, res) => {
+    res.json({
+        name: 'test',
+    });
+});
 
 app.listen(port, () => {
     console.log(`Listening on port http://localhost:${port}`);
