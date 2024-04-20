@@ -1,8 +1,7 @@
 import { Router } from 'express';
+import userRouter from './user/index.route';
 const rootRouter = Router();
 
-rootRouter.get('/test', (req, res) => {
-    res.json('testing routing');
-});
+rootRouter.use('/user', userRouter);
 
 export default rootRouter;

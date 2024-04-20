@@ -7,6 +7,8 @@
         "moduleDetection": "force",
         "jsx": "react-jsx",
         "allowJs": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
 
         /* Bundler mode */
         "moduleResolution": "bundler",
@@ -18,6 +20,9 @@
         /* Linting */
         "skipLibCheck": true,
         "strict": true,
+        "strictFunctionTypes": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
         "noFallthroughCasesInSwitch": true,
         "forceConsistentCasingInFileNames": true,
         "paths": {
