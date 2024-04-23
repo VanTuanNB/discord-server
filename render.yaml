@@ -1,17 +1,13 @@
+version: 1
 services:
-  - name: nodejs
-    buildCommand: docker-compose build
-    startCommand: docker-compose up -d
-    env: .env
-    envVars:
-      - key: PORT
-        from: env
-      - key: VERSION
-        from: env
-    healthCheckPath: /
-    plan: starter
-    ports:
-      - 80:8080
-    volumes:
-      - /app/node_modules
-      - ./src:/usr/src/app
+    - name: bun-app
+      env: .env
+      startCommand: bash -c "bun run start"
+      buildCommand: docker build -t discord-prod-container --target production --build-arg NODE_ENV=production .
+      buildPath: .
+      envVars:
+          - key: NODE_ENV
+            value: production
+      ports:
+          - port: 5001
+            servicePort: 5000
