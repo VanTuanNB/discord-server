@@ -5,10 +5,16 @@ services:
       env: .env
       startCommand: bash -c "bun run start"
       buildCommand: docker build -t discord-prod-container --target production --build-arg NODE_ENV=production .
-      buildPath: .
+      healthCheckPath: /
       envVars:
           - key: NODE_ENV
-            value: production
+            from: env
+          - key: PORT
+            from: env
       ports:
-          - port: 5001
-            servicePort: 5000
+          - 5001:5000
+      volumes:
+          - localPath: ./
+            renderPath: /usr/src/app
+          - localPath: /usr/src/app/node_modules
+            renderPath: /usr/src/app/node_modules
