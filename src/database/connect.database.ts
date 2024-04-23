@@ -1,13 +1,17 @@
-import { mongoDbUrl } from '@/core/configs/env.config';
+import { environment } from '@/core/configs/env.config';
 import mongoose from 'mongoose';
 
 export default class Database {
+    constructor() {}
     public static async connect(): Promise<mongoose.mongo.Db> {
         try {
             mongoose.set('strictQuery', true);
-            if (process.env.NODE_ENV === 'production') {
-            }
-            await mongoose.connect(mongoDbUrl(), {});
+            const url = `mongodb+srv://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_HOST_NAME}/`;
+            console.log('url', url);
+            console.log('env', environment);
+            await mongoose.connect(url, {
+                dbName: environment.MONGO_DB_NAME,
+            });
             console.log('Connected database successfully!!!');
             return mongoose.connection.db;
         } catch (error) {

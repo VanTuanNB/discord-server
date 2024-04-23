@@ -44,13 +44,14 @@
 FROM oven/bun:latest as development
 WORKDIR /usr/src/app
 
+ARG NODE_ENV=development
+ENV NODE_ENV={NODE_ENV}
+
 COPY package*.json .
 
 RUN bun install
 
 COPY . ./
-ENV PORT 5000
-EXPOSE $PORT
 RUN bun run build
 
 # Production
@@ -65,6 +66,4 @@ COPY package*.json .
 RUN bun install
 
 COPY --from=development /usr/src/app/dist ./dist
-ENV PORT 5000
-EXPOSE $PORT
-CMD [ "bun", "dist/index.js" ]
+CMD [ "bun", "--env-file=.env" ,"dist/index.js" ]

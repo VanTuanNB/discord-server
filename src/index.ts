@@ -6,7 +6,7 @@ import rootRouter from '@/routes/index.route.ts';
 import Database from './database/connect.database';
 
 const app = express();
-const port: number = 5000;
+const port: number = Number(process.env.PORT) || 5000;
 const whitelist = ['http://localhost:4209', 'http://localhost:5000'];
 app.use(
     cors((req, callback) => {
@@ -32,9 +32,11 @@ app.get('/', (req, res) => {
     });
 });
 
+console.log('process env', process.env);
+
 // connectDb
 Database.connect();
 
 app.listen(port, () => {
-    console.log(`Listening on port http://localhost:${port}`);
+    console.log(`Listening on port ${port}`);
 });

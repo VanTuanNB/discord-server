@@ -8,7 +8,6 @@ LICENSE
 .vscode
 Makefile
 helm-charts
-.env
 .editorconfig
 .idea
 coverage*

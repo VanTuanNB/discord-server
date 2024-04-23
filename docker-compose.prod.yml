@@ -1,21 +1,16 @@
 version: '3.4'
 
 services:
-    api:
+    bun-app:
+        container_name: discord-prod-container
         build:
             context: .
             target: production
             args:
                 NODE_ENV: production
-        environment:
-            - NODE_ENV=production
-            - MONGO_USER=${MONGO_USER}
-            - MONGO_PASSWORD=${MONGO_PASSWORD}
-            - SESSION_SECRET=${SESSION_SECRET}
         ports:
-            - 5002:5000
-
-    mongo:
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+            - 5001:5000
+        env_file:
+            - ./.env
+        # command: >
+        #     bash -c "bun run start"

@@ -1,25 +1,18 @@
 version: '3.4'
 
 services:
-    api:
+    bun-app:
+        container_name: discord-dev-container
         build:
             context: .
             target: development
             args:
                 NODE_ENV: development
         volumes:
-            - ./src:/usr/src/app
+            - ./:/usr/src/app
             - /usr/src/app/node_modules
         ports:
-            - 5001:5000
-        environment:
-            - NODE_ENV=development
-            - MONGO_USER=tuancao
-            - MONGO_PASSWORD=26072002
-            - SESSION_SECRET=secret
+            - 5000:5000
+        env_file:
+            - ./.env.development
         command: bun run dev
-
-    mongo:
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=tuancao
-            - MONGO_INITDB_ROOT_PASSWORD=26072002
