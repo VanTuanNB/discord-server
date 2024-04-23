@@ -11,8 +11,8 @@ services:
       healthCheckPath: /
       envVars:
           - key: NODE_ENV
-            from: env
+            value: production
           - key: PORT
-            from: env
+            value: production
       port:
           - 5001:5000
