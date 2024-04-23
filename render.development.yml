@@ -1,6 +1,7 @@
 version: 1
 services:
-    - name: bun-app
+    - type: web
+      name: bun-app
       env: .env.development
       startCommand: bun run dev
       buildCommand: docker build -t discord-dev-container --target development --build-arg NODE_ENV=development .

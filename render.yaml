@@ -1,6 +1,7 @@
 version: 1
 services:
-    - name: bun-app
+    - type: web
+      name: bun-app
       env: .env
       startCommand: bash -c "bun run start"
       buildCommand: docker build -t discord-prod-container --target production --build-arg NODE_ENV=production .
