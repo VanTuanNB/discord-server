@@ -6,11 +6,7 @@ export default class Database {
     public static async connect(): Promise<mongoose.mongo.Db> {
         try {
             mongoose.set('strictQuery', true);
-            // const url = `mongodb+srv://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_HOST_NAME}/${environment.MONGO_DB_NAME}`;
-            const url =
-                'mongodb+srv://tuancao:26072002@cluster0.qqymgwc.mongodb.net?retryWrites=true&w=majority&appName=Cluster0';
-            console.log('url', url);
-            console.log('env', environment);
+            const url = `mongodb+srv://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_HOST_NAME}/`;
             await mongoose.connect(url, {
                 dbName: 'discord-db',
                 serverApi: { version: '1', deprecationErrors: true, strict: true },
