@@ -14,6 +14,8 @@ export default class Database {
             await mongoose.connect(url, {
                 dbName: 'discord-db',
                 serverApi: { version: '1', deprecationErrors: true, strict: true },
+                retryWrites: true,
+                w: 'majority',
             });
             await mongoose.connection.db.admin().command({ ping: 1 });
             console.log('Connected database successfully!!!');

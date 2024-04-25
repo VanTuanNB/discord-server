@@ -35,8 +35,12 @@ app.get('/', (req, res) => {
 console.log('process env', process.env);
 
 // connectDb
-Database.connect();
-
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-});
+Database.connect()
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`Listening on port ${port}`);
+        });
+    })
+    .catch((err) => {
+        console.log(err);
+    });
