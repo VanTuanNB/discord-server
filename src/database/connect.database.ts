@@ -11,7 +11,11 @@ export default class Database {
                 'mongodb+srv://tuancao:26072002@cluster0.qqymgwc.mongodb.net?retryWrites=true&w=majority&appName=Cluster0';
             console.log('url', url);
             console.log('env', environment);
-            await mongoose.connect(url, { dbName: 'discord-db' });
+            await mongoose.connect(url, {
+                dbName: 'discord-db',
+                serverApi: { version: '1', deprecationErrors: true, strict: true },
+            });
+            await mongoose.connection.db.admin().command({ ping: 1 });
             console.log('Connected database successfully!!!');
             return mongoose.connection.db;
         } catch (error) {
