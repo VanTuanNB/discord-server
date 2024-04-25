@@ -6,7 +6,7 @@ export default class Database {
     public static async connect(): Promise<mongoose.mongo.Db> {
         try {
             mongoose.set('strictQuery', true);
-            const url = `mongodb+srv://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_HOST_NAME}/`;
+            const url = `mongodb+srv://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_HOST_NAME}/${environment.MONGO_DB_NAME}`;
             console.log('url', url);
             console.log('env', environment);
             await mongoose.connect(url, {
