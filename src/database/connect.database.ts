@@ -8,7 +8,7 @@ export default class Database {
             mongoose.set('strictQuery', true);
             const url = `mongodb+srv://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_HOST_NAME}/`;
             await mongoose.connect(url, {
-                dbName: 'discord-db',
+                dbName: environment.MONGO_DB_NAME,
                 serverApi: { version: '1', deprecationErrors: true, strict: true },
             });
             await mongoose.connection.db.admin().command({ ping: 1 });
