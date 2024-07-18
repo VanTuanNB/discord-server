@@ -1,16 +1,25 @@
-import type { IUserSchema } from '@/core/interfaces/schemas/user.interface';
+import moment from 'moment-timezone';
 import mongoose, { Schema } from 'mongoose';
+import type { IUserEntity } from '../entities/user.entity';
 
-const userSchema = new Schema<IUserSchema>(
+const userSchema = new Schema<IUserEntity & { _id: string }>(
     {
-        id: { type: String, required: true },
+        _id: { type: String, required: true },
         password: { type: String, required: true },
         profileId: { type: String, required: true },
+        refreshToken: { type: String, required: true },
+        createdAt: { type: String, default: moment().format() },
+        updatedAt: { type: String, default: moment().format() },
     },
     {
-        id: false,
+        _id: false,
         timestamps: true,
     },
 );
-
-export default mongoose.model<IUserSchema>('user', userSchema);
+userSchema.methods.toJSON = function () {
+    const user = this.toObject();
+    user.id = user._id;
+    delete user._id;
+    return user;
+};
+export default mongoose.model<IUserEntity & { _id: string }>('user', userSchema);

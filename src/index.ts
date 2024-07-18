@@ -1,9 +1,10 @@
 import cors from 'cors';
 import express from 'express';
 
-import { APP_PATH } from '@/core/common/constants/index.constant.ts';
-import rootRouter from '@/routes/index.route.ts';
+import '@/core/configs/moment-timezone.config';
+import { APP_PATH } from '@/core/constants/index.constant';
 import Database from './database/connect.database';
+import rootRouter from './routes/index.route';
 
 const app = express();
 const port: number = Number(process.env.PORT) || 5000;
@@ -26,14 +27,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(APP_PATH, rootRouter);
-app.get('/', (req, res) => {
-    res.json({
-        name: 'test',
-    });
-});
-
-console.log('process env', process.env);
-
 // connectDb
 Database.connect()
     .then(() => {
