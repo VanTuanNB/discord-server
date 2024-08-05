@@ -26,13 +26,21 @@ export class ChannelModel implements IChannelEntity {
     @IsNotEmpty()
     ownerId: string;
 
-    @IsArray()
-    @IsNotEmpty()
-    recipients: string[];
+    // @IsArray()
+    // @IsNotEmpty()
+    // recipients: string[];
 
     @IsArray()
     @IsOptional()
     lastMessage?: string;
+
+    @IsString()
+    @IsOptional()
+    createdAt?: string;
+
+    @IsString()
+    @IsOptional()
+    updatedAt?: string;
 
     constructor(channel: IChannelEntity) {
         this.id = channel.id;
@@ -41,7 +49,9 @@ export class ChannelModel implements IChannelEntity {
         this.ownerId = channel.ownerId;
         this.type = channel.type;
         this.topic = channel.topic;
-        this.recipients = channel.recipients;
+        // this.recipients = channel.recipients;
         this.lastMessage = channel.lastMessage;
+        this.createdAt = channel.createdAt;
+        this.updatedAt = channel.updatedAt;
     }
 }

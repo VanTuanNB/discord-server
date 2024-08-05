@@ -4,7 +4,9 @@ export type IChannelEntity = {
     name: string;
     type: number;
     topic: string;
-    recipients: string[];
+    // recipients: string[];
     ownerId: string;
     lastMessage?: string;
+    createdAt?: string;
+    updatedAt?: string;
 };

@@ -1,9 +1,8 @@
-export type IReactionEntity = {
+export type IChannelMessageEntity = {
     id: string;
+    channelId: string;
     messageId: string;
     memberId: string;
-    counter: number;
-    emoji: string;
     createdAt?: string;
     updatedAt?: string;
 };
