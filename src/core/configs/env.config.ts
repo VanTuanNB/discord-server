@@ -4,7 +4,8 @@ export const environment = {
     MONGO_USER: Bun.env.MONGO_USER,
     MONGO_PASSWORD: Bun.env.MONGO_PASSWORD,
     MONGO_DB_NAME: Bun.env.MONGO_DB_NAME || 'discord-db',
-    // REDIS_URL: Bun.env.REDIS_URL || 'redis',
-    // REDIS_PORT: Bun.env.REDIS_PORT || 6379,
-    // SESSION_SECRET: Bun.env.SESSION_SECRET,
+    AUTH_PRIVATE_KEY: Bun.env.AUTH_PRIVATE_KEY,
+    AUTH_PUBLIC_KEY: Bun.env.AUTH_PUBLIC_KEY,
+    EMAIL_ADDRESS: Bun.env.EMAIl_ADDRESS,
+    EMAIl_PASSCODE: Bun.env.EMAIl_PASSCODE,
 };
