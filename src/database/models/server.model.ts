@@ -18,9 +18,9 @@ export class ServerModel implements IServerEntity {
     @IsNotEmpty()
     members: string[];
 
-    @IsArray()
+    @IsUUID()
     @IsNotEmpty()
-    channels: string[];
+    guildChannel: string;
 
     @IsString()
     @IsOptional()
@@ -31,7 +31,7 @@ export class ServerModel implements IServerEntity {
         this.name = user.name;
         this.ownerId = user.ownerId;
         this.members = user.members;
-        this.channels = user.channels;
+        this.guildChannel = user.guildChannel;
         this.thumbnail = user.thumbnail;
     }
 }

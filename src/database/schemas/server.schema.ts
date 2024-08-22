@@ -8,7 +8,7 @@ const serverSchema = new Schema<IServerEntity & { _id: string }>(
         name: { type: String, required: true },
         ownerId: { type: String, ref: 'user' },
         members: [{ type: String, ref: 'user' }],
-        channels: [{ type: String, ref: 'user' }],
+        guildChannel: { type: String, ref: 'guild-channel' },
         thumbnail: { type: String, default: null },
         createdAt: { type: String, default: moment().format() },
         updatedAt: { type: String, default: moment().format() },

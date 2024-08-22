@@ -1,8 +1,11 @@
 import cors from 'cors';
+import 'es6-shim';
 import express from 'express';
+import 'reflect-metadata';
 
 import '@/core/configs/moment-timezone.config';
 import { APP_PATH } from '@/core/constants/index.constant';
+import './core/configs/app.config';
 import Database from './database/connect.database';
 import rootRouter from './routes/index.route';
 

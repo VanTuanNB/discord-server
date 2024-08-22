@@ -9,7 +9,7 @@ const channelSchema = new Schema<IChannelEntity & { _id: string }>(
         ownerId: { type: String, required: true },
         serverId: { type: String, required: true },
         type: { type: Number, required: true },
-        topic: { type: String, required: true },
+        topic: { type: String, default: '' },
         lastMessage: { type: String, default: null },
         createdAt: { type: String, default: moment().format() },
         updatedAt: { type: String, default: moment().format() },

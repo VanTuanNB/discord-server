@@ -3,7 +3,7 @@ export type IServerEntity = {
     name: string;
     ownerId: string;
     members: string[];
-    channels: string[];
+    guildChannel: string;
     thumbnail?: string;
     createdAt?: string;
     updatedAt?: string;

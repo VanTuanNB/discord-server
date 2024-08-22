@@ -3,10 +3,15 @@ export type IChannelEntity = {
     serverId: string;
     name: string;
     type: number;
-    topic: string;
     // recipients: string[];
     ownerId: string;
+    topic?: string;
     lastMessage?: string;
     createdAt?: string;
     updatedAt?: string;
+};
+
+export type IPermanentlyDeleteMultipleChannelModel = {
+    serverId: string;
+    channelIds: string[];
 };

@@ -14,10 +14,6 @@ export class ChannelModel implements IChannelEntity {
     @IsNotEmpty()
     type: number;
 
-    @IsString()
-    @IsNotEmpty()
-    topic: string;
-
     @IsUUID()
     @IsNotEmpty()
     serverId: string;
@@ -29,6 +25,10 @@ export class ChannelModel implements IChannelEntity {
     // @IsArray()
     // @IsNotEmpty()
     // recipients: string[];
+
+    @IsString()
+    @IsOptional()
+    topic?: string;
 
     @IsArray()
     @IsOptional()
