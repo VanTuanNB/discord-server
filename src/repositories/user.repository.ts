@@ -7,8 +7,16 @@ export default class UserRepository extends BaseRepository {
         super();
     }
 
+    public async checkUserExists(id: string): Promise<{ _id: string } | null> {
+        return await userSchema.exists({ _id: id });
+    }
+
     public async getList(): Promise<IUserEntity[]> {
         return await userSchema.find().lean();
+    }
+
+    public async getById(id: string): Promise<IUserEntity | null> {
+        return await userSchema.findById(id);
     }
 
     public async getByEmail(email: string): Promise<IUserEntity | null> {

@@ -1,7 +1,8 @@
+import type { ERequestHeaderFields } from '@/core/constants/index.constant';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 
 type TypeParamHeaderRequired = {
-    'dis-user-id': string;
+    [ERequestHeaderFields.USER_ID]: string;
 };
 
 export class ParamHeaderRequiredModel implements TypeParamHeaderRequired {

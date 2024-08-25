@@ -8,3 +8,8 @@ export type TypeForceDeleteServerServicePayload = {
 export type TypePostServerServicePayload = TypePostNewServer & {
     userId: string;
 };
+
+export type TypePostInviteMembers = {
+    id: string;
+    recipients: string[];
+}

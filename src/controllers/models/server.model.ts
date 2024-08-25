@@ -58,24 +58,14 @@ export class PostNewServerModal implements TypePostNewServer {
 
 // region invite members
 type TypePostInviteMembersServer = {
-    serverId: string;
     recipients: string[];
 };
 export class PostInviteMembersServerModal implements TypePostInviteMembersServer {
-    @IsUUID()
-    @IsNotEmpty()
-    serverId: string;
-
     @IsArray()
-    @IsUUID()
     @IsNotEmpty()
     recipients: string[];
 
-    @IsString()
-    @IsOptional()
-    thumbnail?: string;
     constructor(payload: TypePostInviteMembersServer) {
-        this.serverId = payload.serverId;
         this.recipients = payload.recipients;
     }
 }

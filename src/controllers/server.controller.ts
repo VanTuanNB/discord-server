@@ -37,7 +37,7 @@ export default class ServerController {
 
     @Required(PostInviteMembersServerModal)
     public async inviteMembers(req: Request, res: Response): Promise<Response> {
-        const payload = new PostInviteMembersServerModal(req.body);
+        const payload = {...req.body, ...req.params};
         const inviteMemberResponse = await this.serverService.inviteMembers(payload);
         return res.status(inviteMemberResponse.status).json(inviteMemberResponse);
     }
