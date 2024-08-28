@@ -11,6 +11,10 @@ export class FriendRepository extends BaseRepository {
         return await friendSchema.findOne({ userId });
     }
 
+    public async checkListFriendByUserId(userId: string, friendIds: string[]): Promise<{ _id: string } | null> {
+        return await friendSchema.exists({ userId, friends: { $in: friendIds } });
+    }
+
     public async checkRecipientExitsInListSenderRequest(
         userId: string,
         recipient: string,

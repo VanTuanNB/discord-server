@@ -7,7 +7,7 @@ import { UnVerifyAccountModel } from '@/database/models/unverify-account.model';
 import ProfileRepository from '@/repositories/profile.repository';
 import UnVerifyAccountRepository from '@/repositories/unverify-account.repository';
 import UserRepository from '@/repositories/user.repository';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import moment from 'moment-timezone';
 import { v4 as uuidv4 } from 'uuid';
 import { CommonService } from './common.service';

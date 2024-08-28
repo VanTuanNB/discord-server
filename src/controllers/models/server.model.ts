@@ -56,22 +56,6 @@ export class PostNewServerModal implements TypePostNewServer {
     }
 }
 
-// region invite members
-type TypePostInviteMembersServer = {
-    recipients: string[];
-};
-export class PostInviteMembersServerModal implements TypePostInviteMembersServer {
-    @IsArray()
-    @IsNotEmpty()
-    recipients: string[];
-
-    constructor(payload: TypePostInviteMembersServer) {
-        this.recipients = payload.recipients;
-    }
-}
-
-// reg
-
 export class ForceDeleteServicePayloadModel {
     @IsUUID()
     @IsNotEmpty()

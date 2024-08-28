@@ -10,9 +10,9 @@ export class InviteModel implements IInviteEntity {
     @IsNotEmpty()
     sender: string;
 
-    @IsUUID()
+    @IsArray()
     @IsNotEmpty()
-    receiver: string;
+    receivers: string[];
 
     @IsUUID()
     @IsNotEmpty()
@@ -23,7 +23,7 @@ export class InviteModel implements IInviteEntity {
     expire: string;
 
     @IsString()
-    @IsNotEmpty()
+    @IsOptional()
     createdAt?: string;
 
     @IsArray()
@@ -34,7 +34,7 @@ export class InviteModel implements IInviteEntity {
         this.id = params.id;
         this.sender = params.sender;
         this.serverId = params.serverId;
-        this.receiver = params.receiver;
+        this.receivers = params.receivers;
         this.expire = params.expire;
         this.createdAt = params.createdAt;
         this.updatedAt = params.updatedAt;

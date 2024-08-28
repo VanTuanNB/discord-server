@@ -1,7 +1,7 @@
 export type IInviteEntity = {
     id: string;
     sender: string;
-    receiver: string;
+    receivers: string[];
     serverId: string;
     expire: string;
     createdAt?: string;

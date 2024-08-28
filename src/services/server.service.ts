@@ -5,20 +5,19 @@ import { ChannelModel } from '@/database/models/channel.model';
 import { GuildChannelModel } from '@/database/models/guild-channel.model';
 import { ServerModel } from '@/database/models/server.model';
 import { ChannelRepository } from '@/repositories/channel.repository';
+import { FriendRepository } from '@/repositories/friend.repository';
 import { GuildChannelRepository } from '@/repositories/guild-channel.repository';
+import { InviteRepository } from '@/repositories/invite.repository';
 import { ServerRepository } from '@/repositories/server.repository';
-import bcrypt from 'bcrypt';
 import { v4 as uuidV4 } from 'uuid';
-import type {
-    TypeForceDeleteServerServicePayload,
-    TypePostInviteMembers,
-    TypePostServerServicePayload,
-} from './models/server.model';
+import type { TypeForceDeleteServerServicePayload, TypePostServerServicePayload } from './models/server.model';
 
 export default class ServerService {
     private serverRepository = new ServerRepository();
     private channelRepository = new ChannelRepository();
     private guildChannelRepository = new GuildChannelRepository();
+    private friendRepository = new FriendRepository();
+    private inviteRepository = new InviteRepository();
     private validateInputService = new ValidatorInput();
 
     constructor() {}
@@ -102,21 +101,6 @@ export default class ServerService {
             }
             const serverDataCreated = await this.serverRepository.create(serverInstance);
             return new ResponseHandler(201, true, 'Created server successfully', serverDataCreated);
-        } catch (error) {
-            console.log('error', error);
-            return ResponseHandler.InternalServer();
-        }
-    }
-
-    public async inviteMembers(payload: TypePostInviteMembers): Promise<IResponseServer> {
-        try {
-            // get friends of user -> request friendIds -> if friendId exits server -> by pass -> else -> send invite to server
-            const { recipients, id } = payload;
-            console.log('uuid', uuidV4());
-            console.log('await bcrypt.hash(payload.password, 10);', await bcrypt.hash('phatcana111', 10));
-            const server = await this.serverRepository.getById(id);
-            console.log('server', server);
-            return ResponseHandler.Unauthorized();
         } catch (error) {
             console.log('error', error);
             return ResponseHandler.InternalServer();

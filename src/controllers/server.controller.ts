@@ -6,7 +6,6 @@ import { ParamHeaderRequiredModel } from './models/common.model';
 import {
     ForceDeleteServiceParamModel,
     ForceDeleteServicePayloadModel,
-    PostInviteMembersServerModal,
     PostNewServerModal,
 } from './models/server.model';
 
@@ -33,13 +32,6 @@ export default class ServerController {
         const payload = Object.assign({}, req.body, { userId });
         const server = await this.serverService.create(payload);
         return res.status(server.status).json(server);
-    }
-
-    @Required(PostInviteMembersServerModal)
-    public async inviteMembers(req: Request, res: Response): Promise<Response> {
-        const payload = {...req.body, ...req.params};
-        const inviteMemberResponse = await this.serverService.inviteMembers(payload);
-        return res.status(inviteMemberResponse.status).json(inviteMemberResponse);
     }
 
     @Required(ForceDeleteServicePayloadModel)

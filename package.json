@@ -12,7 +12,6 @@
     "production": "bun --env-file=.env --watch ./dist/index.js"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
     "@types/cors": "^2.8.17",
     "@types/jsonwebtoken": "^9.0.6",
@@ -24,8 +23,9 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.21",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "cors": "^2.8.5",

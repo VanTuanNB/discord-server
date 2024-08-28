@@ -6,7 +6,7 @@ const inviteSchema = new Schema<IInviteEntity & { _id: string }>(
     {
         _id: { type: String, required: true },
         sender: { type: String, required: true, ref: 'profile' },
-        receiver: { type: String, required: true, ref: 'profile' },
+        receivers: [{ type: String, required: true, ref: 'profile' }],
         serverId: { type: String, required: true, ref: 'server' },
         expire: { type: String, required: true },
         createdAt: { type: String, default: moment().format() },
